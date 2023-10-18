@@ -17,15 +17,10 @@ df = pd.read_excel(file_path)
 # Group the data by the 'project' column and sum the 'amount' for each project
 project_totals = df.groupby('project')['amount'].sum().reset_index()
 
-# Specify the output Excel file path
-output_file = "Project_Salary_Totals.xlsx"
-
-# Save the project totals to a new Excel file
-project_totals.to_excel(output_file, index=False)
-
 # %%
 # Initialize the Dash app
 app = dash.Dash(__name__)
+server = app.server
 
 # Define a function to calculate the total salary amount for a selected project
 def calculate_total_salary(selected_project):
